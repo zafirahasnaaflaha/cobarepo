@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS PRAKTIKUM SISTEM INFORMASI GEOGRAFIS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            border: 2px solid grey;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        .red {
+            color: red;
+        }
+        h3 {
+            font-size: 15px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>UTS PRAKTIKUM SIGWEB</h1>
+    <p>Praktikum SIGWEB merupakan salah satu mata kuliah pilihan yang ada di geodesi ugm.</p>
+    <p>Mata Kuliah ini membahas mengenai bagaimana pembuatan website khususnya uuntuk keperluan GIS. Minggu pertama perkuliahan kamu dikenalkan mengenai penggunaan bahasa pemograman dalam membangun Web yaitu HTML,CSS, dan JS.
+        Pada minggu selanjutnya kami melakukan latihan untuk membuat web sederhana dengan beberapa syarat seperti menggunakan heading yang berbeda kemudian menggunakan warna pada tulisan dan menambahkan link website ke script html. 
+        Kami juga mempelajari pembuatan CV menggunakan web WIX. Minggu ke 4 kami mulai diperkenalkan untuk menggunakan GITHUB yang tujuannya agar pekerjaan yang kita buat dapat diakses secara umum. 
+        Minggu-minggu selanjutnya kami mulai belajar membuat peta dengan Leaflet dan mengkombinasikannya dengan berbagai plugin seperti menambahkan openstreetmap, menggunakan geoJSon dan menambahkan Bootstrapt.
+    </p>
+    <hr>
+    
+    <p class="red"><i>Saya adalah mahasiswa teknik geodesi angkatan 2023</i></p>
+    <table>
+        <tr>
+            <td>Nama</td>
+            <td>NIM</td>
+        </tr>
+        <tr>
+            <td>Zafira Hasna Aflaha</td>
+            <td>23/518812/TK/57169</td>
+        </tr>
+    </table>
+    <p><strong>Berikut adalah link menuju web geodesi UGM</strong></p>
+    <p><i>geodesi ugm adalah salah satu prodi yang ada di fakultas teknik ugm</i></p>
+    <a href="https://geodesi.ugm.ac.id/en/english/">Link ini menuju ke website Teknik Geodesi</a>
+    <hr>
+
+    <body>
+        <div class="container">
+            <h2>Validasi Pekerjaan</h2>
+                Nama: <input type="text" id="nama" required><br>
+                Password: <input type="password" id="password" required><br>
+                E-mail: <input type="email" id="email" required><br>
+                <button onclick="validasiPassword()">Tampilkan</button>
+                <div id="result"></div>
+        </div>
+        
+        <script>
+            function validasiPassword() {
+                let password = document.getElementById("password").value;
+                
+                if (password !== "selesai") {
+                    alert("Password salah!");
+                    return false; // Mencegah form dikirim jika password salah
+                }
+                alert("Login berhasil!");
+                return true;
+            }
+        </script>
+    
+    </body>
+    <body>
+        <h3>Link Peta.</h3>
+        <p>Berikut adalah link menuju peta yang telah saya buat yaitu peta 5 fakultas yang ada di ugm</p>
+        <a href="https://zafirahasnaaflaha.github.io/cobarepo/projectC/">Link ini menuju ke Peta yang mencakup 5 titik fakultas teknik ugm</a> 
+
+    </body>
+</body>
+</html>
