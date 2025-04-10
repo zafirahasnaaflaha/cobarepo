@@ -1,0 +1,146 @@
+<!DOCTYPE html> 
+<html lang="id"> 
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakultas di Universitas Gadjah Mada</title> 
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.css" />
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-minimap/dist/Control.MiniMap.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            height: 100vh;
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #f39c12;
+        }
+
+        #map { 
+            flex: 1; 
+            height: 100vh; 
+        }
+        .red {
+            color: red;
+        }
+        h1 {
+            display: none;
+        }
+    </style> 
+</head> 
+
+<body>
+
+    <div class="sidebar">
+        <h2>Fakultas di UGM</h2>
+        <ul>
+            <li><a href="https://ft.ugm.ac.id/" target="_blank">Fakultas Teknik</a></li>
+            <li><a href="https://ugm.ac.id/id/fakultas/fakultas-kedokteran-kesehatan-masyarakat-dan-keperawatan/" target="_blank">Fakultas Kedokteran</a></li>
+            <li><a href="https://law.ugm.ac.id/" target="_blank">Fakultas Hukum</a></li>
+            <li><a href="https://feb.ugm.ac.id/id/" target="_blank">Fakultas Eknomika dan Bisnis</a></li>
+            <li><a href="https://web.faperta.ugm.ac.id/" target="_blank">Fakultas Pertanian</a></li>
+        </ul>
+    </div>
+
+    <div id="map"></div> 
+
+    <script>
+        // Layer: OpenStreetMap & Topografi
+        var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+
+        // Inisialisasi Peta
+        var map = L.map('map', { 
+            center: [-7.770500, 110.377300], 
+            zoom: 50,
+            layers: [osmLayer] 
+        });
+
+        L.control.scale().addTo(map);
+
+
+        // Marker Icons Berwarna
+        var redIcon = L.icon({ iconUrl: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png', iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -30] });
+        var blueIcon = L.icon({ iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png', iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -30] });
+        var greenIcon = L.icon({ iconUrl: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png', iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -30] });
+        var yellowIcon = L.icon({ iconUrl: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png', iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -30] });
+        var purpleIcon = L.icon({ iconUrl: 'https://maps.google.com/mapfiles/ms/icons/purple-dot.png', iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -30] });
+
+        // Marker Fakultas di UGM
+        L.marker([-7.770151, 110.378543], {icon: greenIcon}).addTo(map)
+            .bindPopup("<b>Fakultas Teknik UGM</b>.");
+
+        L.marker([-7.768072, 110.379847], {icon: redIcon}).addTo(map)
+            .bindPopup("<b>Fakultas Kedokteran");
+
+        L.marker([-7.772453, 110.378191], {icon: blueIcon}).addTo(map)
+            .bindPopup("<b>fakultas Hukum </b>");
+
+        L.marker([-7.771212, 110.376539], {icon: yellowIcon}).addTo(map)
+            .bindPopup("<b>Fakultas Ekonomika dan Bisnis</br>.");
+
+        L.marker([-7.769313, 110.384057], {icon: purpleIcon}).addTo(map)
+            .bindPopup("<b>Fakultas Pertanian</br>.");
+
+
+        // MiniMap
+        var miniMapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+        var miniMap = new L.Control.MiniMap(miniMapLayer, {
+            toggleDisplay: true,
+            minimized: false
+        }).addTo(map);
+
+        // Layer Control
+        var baseMaps = {
+            "OpenStreetMap": osmLayer
+        };
+
+        L.control.layers(baseMaps).addTo(map);
+    </script>
+
+</body> 
+</html>
